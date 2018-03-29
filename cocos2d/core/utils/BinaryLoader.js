@@ -37,6 +37,7 @@ cc.loader.loadBinary = function (url, cb) {
     var xhr = this.getXMLHttpRequest(),
         errInfo = "load " + url + " failed!";
     xhr.open("GET", url, true);
+    xhr.timeout = 10000;
     xhr.responseType = 'arraybuffer';
     if (cc.loader.loadBinary._IEFilter) {
         // IE-specific logic here
@@ -78,9 +79,9 @@ cc.loader._str2Uint8Array = function (strData) {
 cc.loader.loadBinarySync = function (url) {
     var self = this;
     var req = this.getXMLHttpRequest();
-    req.timeout = 0;
     var errInfo = "load " + url + " failed!";
     req.open('GET', url, false);
+    req.timeout = 0;
     var arrayInfo = null;
     if (cc.loader.loadBinary._IEFilter) {
         req.setRequestHeader("Accept-Charset", "x-user-defined");

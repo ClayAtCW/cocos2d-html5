@@ -125,7 +125,7 @@ cc.EGLView = cc.Class.extend(/** @lends cc.view# */{
     // Custom callback for resize event
     _resizeCallback: null,
 
-    _orientationChanging: true,
+    _orientationChanging: false,
     _resizing: false,
 
     _scaleX: 1,
@@ -187,8 +187,6 @@ cc.EGLView = cc.Class.extend(/** @lends cc.view# */{
 
         if (sys.isMobile) {
             window.addEventListener('orientationchange', this._orientationChange);
-        } else {
-            this._orientationChanging = false;
         }
     },
 
